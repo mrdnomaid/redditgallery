@@ -2,7 +2,7 @@ const div = document.getElementById('imgs');
 const lselect = document.getElementById('limit');
 const sselect = document.getElementById('sub');
 // const oselect = document.getElementById('sort');
-let loadedhash = window.location.hash.replace('#','');
+let loadedhash = window.location.hash.replace('#', '');
 
 function loadImgs() {
   div.innerHTML = 'Loading...';
@@ -11,17 +11,17 @@ function loadImgs() {
   let sub = sselect.value.substring(0, 20);
   let sort = $('#sort').val();
 
-  if (!sub) {
-    let sub = 'disneyvacation';
+  if (!sselect.value) {
+    sub = 'disneyvacation';
+
+    if (window.location.hash.length > 2) {
+      sub = window.location.hash.replace('#', '');
+    }
+
     sselect.value = sub;
   }
 
-
-  if (loadedhash) {
-    sub = loadedhash;
-  }
-
-  loadedhash = sub;
+  window.location.hash = sub;
   sselect.value = sub;
   document.title = `${sub} - Simple Reddit Image Gallery - dnomaid.co.uk`;
 
