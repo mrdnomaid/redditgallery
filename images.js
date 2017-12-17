@@ -2,23 +2,22 @@ const div = document.getElementById('imgs');
 const lselect = document.getElementById('limit');
 const sselect = document.getElementById('sub');
 // const oselect = document.getElementById('sort');
-let loadedhash = window.location.hash.replace('#', '');
 
 function loadImgs() {
   div.innerHTML = 'Loading...';
 
   let limit = `?limit=${lselect.value}`;
-  let sub = sselect.value.substring(0, 20);
   let sort = $('#sort').val();
 
-  if (!sselect.value) {
-    sub = 'disneyvacation';
+  let sub = 'disneyvacation';
 
+  if (!sselect.value) {
     if (window.location.hash.length > 2) {
       sub = window.location.hash.replace('#', '');
     }
-
     sselect.value = sub;
+  } else {
+    sub = sselect.value.substring(0, 20);
   }
 
   window.location.hash = sub;
