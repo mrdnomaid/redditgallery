@@ -46,7 +46,7 @@
 
     <p id="options">
       Load
-      <input type="number" min="1" max="100" value="25" id="limit" onchange="loadImgs();">
+      <input type="number" min="1" max="100" value="5" id="limit" onchange="loadImgs();">
 
       <select id="sort" onchange="loadImgs();">
         <option selected="true" value="">hot</option>
@@ -55,7 +55,16 @@
         <option value="/rising">rising</option>
         <option value="/controversial">controversial</option>
         <option value="/gilded">gilded</option>
-      </select> posts from /r/<input type="text" id="sub" maxlength="20" id="sub" onchange="loadImgs();">
+      </select>
+
+      posts from /r/<input type="text" id="sub" maxlength="20" id="sub" onchange="loadImgs();">
+
+      <select id="nsfw" onchange="loadImgs();">
+        <option selected="true" value="n">without</option>
+        <option value="y">with</option>
+      </select>
+
+      NSFW content.
     </p>
   </header>
 

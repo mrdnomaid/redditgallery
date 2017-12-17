@@ -8,6 +8,7 @@ function loadImgs() {
 
   let limit = `?limit=${lselect.value}`;
   let sort = $('#sort').val();
+  let nsfw = $('#nsfw').val();
 
   let subs = ['disneyvacation', 'aww', 'eyebleach', 'marijuanaenthusiasts'];
   let sub = subs[Math.floor(Math.random() * subs.length)];
@@ -41,7 +42,11 @@ function loadImgs() {
       let post = posts[i].data;
 
       if (post.url && post.url.match(/\.(jpeg|jpg|gif|png)$/) && post.url.indexOf('https') !== -1) {
-        div.innerHTML += `<a href="javascript:doMsg('Double click to open!',false,true);" title="'${post.title}' by /u/${post.author}" ondblclick="document.location.href = 'https://reddit.com${post.permalink}'"><img src="${post.url}"></a>`;
+        if (nsfw == 'n' && post.over_18 == true) {
+          // do nothing, this post is nsfw and the user has nsfw posts turned off
+        } else {
+          div.innerHTML += `<a href="javascript:doMsg('Double click to open!',false,true);" title="'${post.title}' by /u/${post.author}" ondblclick="document.location.href = 'https://reddit.com${post.permalink}'"><img src="${post.url}"></a>`;
+        }
       }
     }
 
