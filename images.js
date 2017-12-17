@@ -43,7 +43,7 @@ function loadImgs() {
     }
 
     if (div.innerHTML == '' || !div.innerHTML) {
-      div.innerHTML = `<h3>Whoops!</h3><h4>No images found!</h4><p>There may not be any images or gifs in /r/${sub} or the subreddit name may be spelt incorrectly.</p>`;
+      div.innerHTML = `<h3>Whoops!</h3><h4>No images found!</h4><p>There may not be any images or gifs in /r/${sub} or the subreddit name may be spelt incorrectly.</p><p>It's also possible that you went over the reddit API limit, in which case, you'll just ned to wait a bit.</p>`;
     }
   })
 }
