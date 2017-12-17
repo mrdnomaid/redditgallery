@@ -2,7 +2,7 @@ const div = document.getElementById('imgs');
 const lselect = document.getElementById('limit');
 const sselect = document.getElementById('sub');
 // const oselect = document.getElementById('sort');
-
+let loadedhash = window.location.hash.replace('#','');
 
 function loadImgs() {
   div.innerHTML = 'Loading...';
@@ -16,13 +16,14 @@ function loadImgs() {
     sselect.value = sub;
   }
 
-  if (window.location.hash) {
-    sub = window.location.hash.replace('#', '');
-    sselect.value = sub;
-    document.title = `${sub} - Simple Reddit Image Gallery - dnomaid.co.uk`;
-  } else {
-    window.location.hash = sub;
+
+  if (loadedhash) {
+    sub = loadedhash;
   }
+
+  loadedhash = sub;
+  sselect.value = sub;
+  document.title = `${sub} - Simple Reddit Image Gallery - dnomaid.co.uk`;
 
   let apiurl = `https://www.reddit.com/r/${sub}${sort}.json${limit}`;
   console.log(`Using URL: ${apiurl}`);
