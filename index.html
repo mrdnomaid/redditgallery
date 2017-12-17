@@ -55,16 +55,18 @@
         <option value="/rising">rising</option>
         <option value="/controversial">controversial</option>
         <option value="/gilded">gilded</option>
-      </select>
-
-      posts from /r/<input type="text" id="sub" maxlength="20" id="sub" onchange="loadImgs();">
+      </select> posts <wbr>from /r/<input type="text" id="sub" maxlength="20" id="sub" onchange="loadImgs();"><wbr>
 
       <select id="nsfw" onchange="loadImgs();">
         <option selected="true" value="n">without</option>
         <option value="y">with</option>
-      </select>
+      </select> NSFW content<wbr> and with
 
-      NSFW content.
+      <select id="shuffle" onchange="loadImgs();">
+        <option value="n">ordered</option>
+        <option value="y" selected="true" >shuffled</option>
+      </select> images.
+
     </p>
   </header>
 
@@ -73,15 +75,8 @@
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="common.js"></script>
   <script src="images.js"></script>
-  <script>
-    function hideHeader() {
-      $('header div#meta').slideToggle();
-      $('span#a-u').toggle();
-      $('span#a-d').toggle();
-    }
-  </script>
-
 </body>
 
 </html>

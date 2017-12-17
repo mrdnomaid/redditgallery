@@ -9,6 +9,7 @@ function loadImgs() {
   let limit = `?limit=${lselect.value}`;
   let sort = $('#sort').val();
   let nsfw = $('#nsfw').val();
+  let shuffle = $('#shuffle').val();
 
   let subs = ['disneyvacation', 'aww', 'eyebleach', 'marijuanaenthusiasts'];
   let sub = subs[Math.floor(Math.random() * subs.length)];
@@ -32,11 +33,14 @@ function loadImgs() {
   doMsg('Sending a request to reddit');
 
   $.getJSON(apiurl, function(response) {
-    const posts = response.data.children;
+    let posts = response.data.children;
 
     div.innerHTML = '';
 
     doMsg('Sorting posts');
+    if (shuffle == 'y') {
+      s(posts);
+    }
 
     for (let i = 0; i < posts.length; i++) {
       let post = posts[i].data;
@@ -56,28 +60,4 @@ function loadImgs() {
       doMsg('No images found!', true);
     }
   })
-}
-
-function doMsg(msg, warn, time) {
-  let before = document.getElementById('message').innerHTML;
-
-  if (warn) {
-    warn = '&#9888; ';
-  } else {
-    warn = '';
-  }
-
-  document.getElementById('message').innerHTML = `${warn}${msg}`;
-
-  if (time) {
-    window.setTimeout(function() {
-      document.getElementById('message').innerHTML = before;
-    }, 2500);
-  }
-}
-
-function doTitle(msg) {
-  // let before = document.getElementById('message').innerHTML;
-  //
-  // document.getElementById('message').innerHTML = `${msg}`;
 }
