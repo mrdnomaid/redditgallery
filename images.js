@@ -16,7 +16,12 @@ function loadImgs() {
     sselect.value = sub;
   }
 
-  window.location.hash = sub;
+  if (window.location.hash) {
+    sub = window.location.hash;
+    sselect.value = sub;
+  } else {
+    window.location.hash = sub;
+  }
 
   let apiurl = `https://www.reddit.com/r/${sub}${sort}.json${limit}`;
   console.log(`Using URL: ${apiurl}`);
