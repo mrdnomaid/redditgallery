@@ -11,7 +11,7 @@ function loadImgs() {
   let nsfw = $('#nsfw').val();
   let shuffle = $('#shuffle').val();
 
-  let subs = ['disneyvacation', 'aww', 'eyebleach', 'marijuanaenthusiasts'];
+  let subs = ['disneyvacation', 'aww', 'eyebleach', 'marijuanaenthusiasts', 'pics', 'bitbics'];
   let sub = subs[Math.floor(Math.random() * subs.length)];
 
   if (!sselect.value) {
