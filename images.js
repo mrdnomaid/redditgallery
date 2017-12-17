@@ -9,7 +9,8 @@ function loadImgs() {
   let limit = `?limit=${lselect.value}`;
   let sort = $('#sort').val();
 
-  let sub = 'disneyvacation';
+  let subs = ['disneyvacation', 'aww', 'eyebleach', 'marijuanaenthusiasts'];
+  let sub = subs[Math.floor(Math.random() * subs.length)];
 
   if (!sselect.value) {
     if (window.location.hash.length > 2) {
