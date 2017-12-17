@@ -28,7 +28,7 @@
 </head>
 
 <body onload="loadImgs();">
-  <a href="javascript:hideHeader()" id="hh" title="Hide Header"><span id="a-u">&#9206;</span><span id="a-d" style="display: none;">&#9207;</span></a>
+  <a href="javascript:hideHeader()" id="hh" title="Hide Header"><span id="a-u">Hide Header &#9206;</span><span id="a-d" style="display: none;">Show Header &#9207;</span></a>
 
   <div id="message">
 
@@ -44,7 +44,7 @@
       <p>Firefox users: take a look <a href="https://stackoverflow.com/a/34243073">here</a> if this isn't working.</p>
     </div>
 
-    <p>
+    <p id="options">
       Load
       <input type="number" min="1" max="100" value="25" id="limit" onchange="loadImgs();">
 
@@ -67,7 +67,7 @@
   <script src="images.js"></script>
   <script>
     function hideHeader() {
-      $('header div#meta').toggle();
+      $('header div#meta').slideToggle();
       $('span#a-u').toggle();
       $('span#a-d').toggle();
     }

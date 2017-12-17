@@ -4,7 +4,7 @@ const sselect = document.getElementById('sub');
 // const oselect = document.getElementById('sort');
 
 function loadImgs() {
-  div.innerHTML = 'Loading...';
+  doMsg('Loading');
 
   let limit = `?limit=${lselect.value}`;
   let sort = $('#sort').val();
@@ -27,35 +27,47 @@ function loadImgs() {
   let apiurl = `https://www.reddit.com/r/${sub}${sort}.json${limit}`;
   console.log(`Using URL: ${apiurl}`);
 
-  div.innerHTML = 'Sending a request to reddit...';
-  apiurl
+  doMsg('Sending a request to reddit');
+
   $.getJSON(apiurl, function(response) {
     const posts = response.data.children;
 
     div.innerHTML = '';
 
+    doMsg('Sorting posts');
+
     for (let i = 0; i < posts.length; i++) {
       let post = posts[i].data;
 
       if (post.url && post.url.match(/\.(jpeg|jpg|gif|png)$/) && post.url.indexOf('https') !== -1) {
-        div.innerHTML += `<a href="javascript:doMsg('Double click to open!');" title="'${post.title}' by /u/${post.author}" ondblclick="document.location.href = 'https://reddit.com${post.permalink}'"><img src="${post.url}"></a>`;
+        div.innerHTML += `<a href="javascript:doMsg('Double click to open!',false,true);" title="'${post.title}' by /u/${post.author}" ondblclick="document.location.href = 'https://reddit.com${post.permalink}'"><img src="${post.url}"></a>`;
       }
     }
 
+    doMsg('', false, false);
+
     if (div.innerHTML == '' || !div.innerHTML) {
-      div.innerHTML = `<h3>Whoops!</h3><h4>No images found!</h4><p>There may not be any images or gifs in /r/${sub} or the subreddit name may be spelt incorrectly.</p><p>It's also possible that you went over the reddit API limit, in which case, you'll just ned to wait a bit.</p>`;
+      doMsg('No images found!', true);
     }
   })
 }
 
-function doMsg(msg) {
+function doMsg(msg, warn, time) {
   let before = document.getElementById('message').innerHTML;
 
-  document.getElementById('message').innerHTML = `&#9888; ${msg}`;
+  if (warn) {
+    warn = '&#9888; ';
+  } else {
+    warn = '';
+  }
 
-  window.setTimeout(function() {
-    document.getElementById('message').innerHTML = before;
-  }, 2500);
+  document.getElementById('message').innerHTML = `${warn}${msg}`;
+
+  if (time) {
+    window.setTimeout(function() {
+      document.getElementById('message').innerHTML = before;
+    }, 2500);
+  }
 }
 
 function doTitle(msg) {
