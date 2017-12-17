@@ -34,13 +34,16 @@ function loadImgs() {
 
     div.innerHTML = '';
 
-    console.log(posts.length);
     for (let i = 0; i < posts.length; i++) {
       let post = posts[i].data;
 
-      if (post.url && post.url.match(/\.(jpeg|jpg|gif|png)$/)) {
+      if (post.url && post.url.match(/\.(jpeg|jpg|gif|png)$/) && post.url.indexOf('https') !== -1) {
         div.innerHTML += `<a href="javascript:doMsg('Double click to open!');" title="'${post.title}' by /u/${post.author}" ondblclick="document.location.href = 'https://reddit.com${post.permalink}'"><img src="${post.url}"></a>`;
       }
+    }
+
+    if (div.innerHTML == '' || !div.innerHTML) {
+      div.innerHTML = `<h3>Whoops!</h3><h4>No images found!</h4><p>There may not be any images or gifs in /r/${sub} or the subreddit name may be spelt incorrectly.</p>`;
     }
   })
 }
