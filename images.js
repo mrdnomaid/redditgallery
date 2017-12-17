@@ -17,7 +17,7 @@ function loadImgs() {
   }
 
   if (window.location.hash) {
-    sub = window.location.hash;
+    sub = window.location.hash.replace('#', '');
     sselect.value = sub;
   } else {
     window.location.hash = sub;
