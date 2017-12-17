@@ -19,6 +19,7 @@ function loadImgs() {
   if (window.location.hash) {
     sub = window.location.hash.replace('#', '');
     sselect.value = sub;
+    document.title = `${sub} - Simple Reddit Image Gallery - dnomaid.co.uk`;
   } else {
     window.location.hash = sub;
   }
