@@ -2,53 +2,53 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="title" content="Simple Reddit Image Gallery">
-  <meta name="description" content="A simple, no frills reddit image gallery">
-  <meta name="keywords" content="dnomaid, mrdnomaid, reddit, image, gallery, subreddit, picture, album, website, online">
+    <meta name="title" content="Simple Reddit Image Gallery">
+    <meta name="description" content="A simple, no frills reddit image gallery">
+    <meta name="keywords" content="dnomaid, mrdnomaid, reddit, image, gallery, subreddit, picture, album, website, online">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@mrdnomaid">
-  <meta name="twitter:title" content="Simple Reddit Image Gallery">
-  <meta name="twitter:description" content="A simple, no frills reddit image gallery">
-  <meta name="twitter:image" content="icomoon-images.png">
-  <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@mrdnomaid">
+    <meta name="twitter:title" content="Simple Reddit Image Gallery">
+    <meta name="twitter:description" content="A simple, no frills reddit image gallery">
+    <meta name="twitter:image" content="icomoon-images.png">
+    <meta name="twitter:dnt" content="on">
 
-  <meta property="og:title" content="Simple Reddit Image Gallery">
-  <meta property="og:description" content="A simple, no frills reddit image gallery">
-  <meta property="og:image" content="icomoon-images.png">
+    <meta property="og:title" content="Simple Reddit Image Gallery">
+    <meta property="og:description" content="A simple, no frills reddit image gallery">
+    <meta property="og:image" content="icomoon-images.png">
 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 
-  <link href="icomoon-images.png" rel="shortcut icon" type="image/png">
-  <title>Simple Reddit Image Gallery - dnomaid.co.uk</title>
+    <link href="icomoon-images.png" rel="shortcut icon" type="image/png">
+    <title>Simple Reddit Image Gallery - dnomaid.co.uk</title>
 </head>
 
 <body onload="loadImgs();">
-  <a href="javascript:hideHeader()" id="hh" title="Hide Header"><span id="a-u">Hide Header &#9206;</span><span id="a-d" style="display: none;">Show Header &#9207;</span></a>
+    <a href="javascript:hideHeader()" id="hh" title="Hide Header"><span id="a-u">Hide Header &#9206;</span><span id="a-d" style="display: none;">Show Header &#9207;</span></a>
 
-  <div id="message">
+    <div id="message">
 
-  </div>
-
-  <header>
-    <div id="meta">
-      <h1><a href="https://github.com/mrdnomaid/redditgallery" style="color: inherit;">Simple Reddit Image Gallery</a></h1>
-      <noscript>
-        <h2>This site requires JavaScript. Please <a href="https://enable-javascript.com">enable it</a>.</h2>
-      </noscript>
-      <p>A <a href="https://dnomaid.co.uk">dnomaid</a> thing that's not made by the reddit team.</p>
-      <p>Firefox users: take a look <a href="https://stackoverflow.com/a/34243073">here</a> if this isn't working.</p>
     </div>
 
-    <p id="options">
-      Load
-      <input type="number" min="1" max="100" value="20" id="limit" onchange="loadImgs();">
+    <header>
+        <div id="meta">
+            <h1><a href="https://github.com/mrdnomaid/redditgallery" style="color: inherit;">Simple Reddit Image Gallery</a></h1>
+            <noscript>
+        <h2>This site requires JavaScript. Please <a href="https://enable-javascript.com">enable it</a>.</h2>
+      </noscript>
+            <p>A <a href="https://dnomaid.co.uk">dnomaid</a> thing that's not made by the reddit team.</p>
+            <p>Firefox users: take a look <a href="https://stackoverflow.com/a/34243073">here</a> if this isn't working.</p>
+        </div>
 
-      <select id="sort" onchange="loadImgs();">
+        <p id="options">
+            Load
+            <input type="number" min="1" max="100" value="20" id="limit" onchange="loadImgs();">
+
+            <select id="sort" onchange="loadImgs();">
         <option selected="true" value="">hot</option>
         <option value="/top">top</option>
         <option value="/new">new</option>
@@ -57,26 +57,36 @@
         <option value="/gilded">gilded</option>
       </select> posts <wbr>from /r/<input type="text" id="sub" maxlength="20" id="sub" onchange="loadImgs();"><wbr>
 
-      <select id="nsfw" onchange="loadImgs();">
+            <select id="nsfw" onchange="loadImgs();">
         <option selected="true" value="n">without</option>
         <option value="y">with</option>
       </select> NSFW content<wbr> and with
 
-      <select id="shuffle" onchange="loadImgs();">
+            <select id="shuffle" onchange="loadImgs();">
         <option value="n">ordered</option>
         <option value="y" selected="true" >shuffled</option>
-      </select> images.
+      </select> content.<wbr>
 
-    </p>
-  </header>
+            <select id="self" onchange="loadImgs();">
+        <option value="n" selected="true">Don't show</option>
+        <option value="y">Do show</option>
+      </select> selfposts<wbr>
 
-  <div id="imgs">
+        <select id="selfc" onchange="loadImgs();">
+          <option value="n">without</option>
+          <option value="y" selected="true">with</option>
+        </select> post content.
 
-  </div>
+        </p>
+    </header>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="common.js"></script>
-  <script src="images.js"></script>
+    <div id="imgs">
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="common.js"></script>
+    <script src="images.js"></script>
 </body>
 
 </html>
