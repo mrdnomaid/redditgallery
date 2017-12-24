@@ -22,7 +22,7 @@ function loadImgs(append) {
         }
         sselect.value = sub;
     } else {
-        sub = sselect.value.substring(0, 20);
+        sub = sselect.value.substring(0, 50);
     }
 
     if (!append) {
